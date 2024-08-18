@@ -1,1 +1,34 @@
-<p>markers-page works!</p>
+
+<div id="map" #map></div>
+
+<ul class="list-group">
+  @for ( colorMarker of markers; track colorMarker ) {
+    <li class="list-group-item p-0"
+        [ngStyle]="{ backgroundColor: colorMarker.color }">
+      <div class="row">
+        <div class="col-9 d-flex align-items-center"
+             (click)="flyTo( colorMarker.marker.getLngLat(), 14 )">
+          <span class="ps-2">Marker {{ $index + 1}}</span>
+        </div>
+        <div class="col-2 px-0">
+          <button class="btn btn-danger" (click)="deleteMarker( $index )">X</button>
+        </div>
+      </div>
+    </li>
+    <!-- <li class="list-group-item d-flex justify-content-between align-items-center p-0"
+        [ngStyle]="{ backgroundColor: colorMarker.color }"
+        (click)="flyTo( colorMarker.marker.getLngLat(), 14 )">
+      <div
+        [ngStyle]="{ backgroundColor: colorMarker.color }">
+        <span class="ps-2">
+          Marker {{ $index + 1}}
+        </span>
+      </div>
+      <button class="btn btn-danger" (click)="deleteMarker( $index, $event )">X</button>
+    </li> -->
+  }
+</ul>
+
+<button id="btnAdd" (click)="createMarker()" class="btn btn-primary">
+  Agregar marcador
+</button>
