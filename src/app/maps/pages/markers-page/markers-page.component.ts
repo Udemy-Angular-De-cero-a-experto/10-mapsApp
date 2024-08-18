@@ -38,22 +38,23 @@ export class MarkersPageComponent implements AfterViewInit {
     this.map.on( 'click', (evt) => {
       if ( !evt.originalEvent.ctrlKey ) return;
 
-      const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
-
-      this.addMarker( evt.lngLat, color );
+      this.addMarker( evt.lngLat, this.colorRandom() );
       this.flyTo( evt.lngLat, 16 );
     });
 
     this.readFromLocalStorage();
   }
 
+  colorRandom(): string {
+    return '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
+  }
+
   createMarker(): void {
     if ( !this.map ) return;
 
-    const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
     const lngLat = this.map.getCenter();
 
-    this.addMarker( lngLat, color );
+    this.addMarker( lngLat, this.colorRandom() );
 
   }
 
