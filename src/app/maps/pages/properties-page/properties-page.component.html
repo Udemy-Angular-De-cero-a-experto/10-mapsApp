@@ -9,21 +9,23 @@
 <div class="row mt-2">
   <div class="col-2"></div>
   <div class="col">
-    <div class="row">
+    <div class="row pe-3">
 
       <!-- Houses -->
       @for (house of houses; track house) {
-        <div class="col-4 mb-2">
-          <div class="card shadow">
-            <!-- <img src="..." class="card-img-top"> -->
-            <maps-mini-map class="p-1" [lngLat]="house.lngLat" />
-            <hr class="m-0">
-            <div class="card-body">
-              <h5 class="card-title">{{ house.title }}</h5>
-              <p class="card-text">{{ house.description }}</p>
-            </div>
+      <div class="col-4 mb-2">
+        <div class="card shadow">
+          <!-- <img src="..." class="card-img-top"> -->
+          <div class="row p-1" [ngStyle]="{ 'cursor': 'pointer' }" (click)="goFullScreen( house )">
+            <maps-mini-map [lngLat]="house.lngLat" />
+          </div>
+          <hr class="m-0">
+          <div class="card-body">
+            <h5 class="card-title text-center fw-bolder">{{ house.title }}</h5>
+            <p class="card-text">{{ house.description }}</p>
           </div>
         </div>
+      </div>
       }
 
     </div>

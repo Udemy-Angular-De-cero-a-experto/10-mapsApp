@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface House {
   title: string;
@@ -34,5 +35,18 @@ export class PropertiesPageComponent {
       lngLat: [ -3.7112735618380177, 40.42567285425766 ]
     },
   ]
+
+  constructor( private router: Router) {}
+
+  goFullScreen( house: House ): void {
+    if ( !house ) return;
+
+    const [ lng, lat ] = house.lngLat;
+
+    this.router.navigate(
+      ['/maps/fullscreen'],
+      { queryParams: { lng: lng.toString(), lat: lat.toString(), zoom: '15' } }
+    );
+  }
 
 }
