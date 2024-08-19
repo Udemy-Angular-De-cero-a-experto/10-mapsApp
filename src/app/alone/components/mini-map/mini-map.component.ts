@@ -2,7 +2,9 @@ import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular
 import { Map, Marker } from 'mapbox-gl';
 
 @Component({
-  selector: 'maps-mini-map',
+  selector: 'mini-map',
+  standalone: true,
+  imports: [],
   templateUrl: './mini-map.component.html',
   styleUrl: './mini-map.component.css'
 })

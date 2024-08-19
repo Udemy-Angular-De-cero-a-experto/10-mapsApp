@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 interface MenuItem {
   name: string;
@@ -6,7 +7,9 @@ interface MenuItem {
 }
 
 @Component({
-  selector: 'maps-side-menu',
+  selector: 'side-menu',
+  standalone: true,
+  imports: [RouterModule],
   templateUrl: './side-menu.component.html',
   styleUrl: './side-menu.component.css'
 })
@@ -17,6 +20,7 @@ export class SideMenuComponent {
     { name: 'ZoomRange', route: '/maps/zoom-range' },
     { name: 'Markers', route: '/maps/markers' },
     { name: 'Houses', route: '/maps/properties' },
+    { name: 'Alone', route: '/alone' },
   ];
 
 
